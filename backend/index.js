@@ -11,7 +11,7 @@ fastify.register(fastifyJWT, { secret: 'supersecret' });
 
 const db = new Client({
   user: 'postgres',
-  host: 'localhost',
+  host: '127.0.0.1',
   database: 'blog_platform',
   password: 'Asha2812@',
   port: 5432,

@@ -7,13 +7,13 @@ export default function Home() {
   const [posts, setPosts] = useState([]);
   const [isLoggedIn, setIsLoggedIn] = useState(false);
 
+  const baseURL = process.env.NEXT_PUBLIC_API_BASE_URL;
+
   useEffect(() => {
-    // Fetch posts
-    axios.get('http://localhost:3001/posts')
+    axios.get(`${baseURL}/posts`)
       .then(res => setPosts(res.data))
       .catch(err => console.error(err));
 
-    // Check login status
     const token = localStorage.getItem('token');
     setIsLoggedIn(!!token);
   }, []);
@@ -26,7 +26,7 @@ export default function Home() {
     }
 
     try {
-      await axios.delete(`http://localhost:3001/posts/${id}`, {
+      await axios.delete(`${baseURL}/posts/${id}`, {
         headers: {
           Authorization: `Bearer ${token}`
         }
@@ -38,6 +38,7 @@ export default function Home() {
       alert('Failed to delete post. You may not be the author.');
     }
   };
+
 
   return (
     <Box
