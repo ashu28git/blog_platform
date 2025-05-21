@@ -15,22 +15,20 @@ This project is a **full-stack blog platform** built as part of the **IgnIPC Web
 
 ---
 
-## 📝 Assignment Requirements (Covered ✅)
+## Project Screenshots
 
-| Feature                                    | Status |
-|--------------------------------------------|--------|
-| Full-stack blog platform                   | ✅     |
-| CRUD operations for blog posts             | ✅     |
-| User login and registration                | ✅     |
-| Authentication with JWT                   | ✅     |
-| Only authors can edit/delete their posts   | ✅     |
-| UI using Material-UI                       | ✅     |
-| Responsive frontend                        | ✅     |
-| PostgreSQL integration                     | ✅     |
-| Deployment-ready with Vercel config        | ✅     |
-| README and documentation                   | ✅     |
+### Homepage
+![Homepage Screenshot](./screenshots/home.png)
 
----
+### Login Page
+![Login Page Screenshot](./screenshots/login.png)
+
+### Posts List
+![Posts List Screenshot](./screenshots/create-post.png)
+
+
+### edit-delete List
+![Posts List Screenshot](./screenshots/edit.png)
 
 ## 👤 Demo Login
 

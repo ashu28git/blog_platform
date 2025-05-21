@@ -1,22 +1,28 @@
 const fastify = require('fastify')({ logger: true });
 const fastifyJWT = require('@fastify/jwt');
-const fastifyCors = require('@fastify/cors');
+//const fastifyCors = require('@fastify/cors');
 const { Client } = require('pg');
 
-fastify.register(fastifyCors);
+//fastify.register(fastifyCors);
 fastify.register(fastifyJWT, { secret: 'supersecret' });
 
+fastify.register(require('@fastify/cors'), {
+  origin: ['https://blog-platform-ten-tau.vercel.app/', 'http://localhost:3000'],
+});
+
+
+require('dotenv').config();
 
 
 
 const db = new Client({
-  user: 'postgres',
-  host: '127.0.0.1',
-  database: 'blog_platform',
-  password: 'Asha2812@',
-  port: 5432,
+  user: process.env.PGUSER,
+  host: process.env.PGHOST,
+  database: process.env.PGDATABASE,
+  password: process.env.PGPASSWORD,
+  port: process.env.PGPORT,
 });
-db.connect();
+
 
 // Register user
 fastify.post('/register', async (req, reply) => {
@@ -118,10 +124,18 @@ fastify.put('/posts/:id', async (req, reply) => {
 });
 
 
-fastify.listen({ port: 3001 }, err => {
+const PORT = process.env.PORT || 3001;
+
+fastify.listen({ port: process.env.PORT || 3001, host: '0.0.0.0' }, err => {
   if (err) throw err;
-  console.log('Server running on port 3001');
+  console.log('Server running');
 });
+
+
+fastify.get('/', async (req, reply) => {
+  return { message: 'Backend is running!' };
+});
+
 
 
 
